@@ -2,13 +2,14 @@
 
 echo "PassWordマネージャーへようこそ！"
 
-echo "enter service name"
-read service_name
+read -p "enter service name:" service_name
+#!入力値をファイルに保存
+echo "$service_name">>saved_password.txt
 
-echo "enter user name"
-read user_name
+read -p "enter user name: " name
+echo "$name">>saved_password.txt
 
-echo "enter password"
-read password
+read -p "enter password: " password
+echo "$password">>saved_password.txt
 
 echo "Thank you!"
