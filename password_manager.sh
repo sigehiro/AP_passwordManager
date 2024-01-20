@@ -14,8 +14,23 @@ if [ "$choice" == "Add Password" ]; then
     echo "$service_name:$name:$password">>saved_password.txt
     echo "パスワードの追加は成功しました。"
 
-#!elif [ "$choice" == "Get Password" ]; then
-    #!処理あとから書く。
+elif [ "$choice" == "Get Password" ]; then
+    found=false
+    read -p "enter service name:" service_name
+
+    #!ファイルから１行ずつ読み込んで、「サービス名」に合致するデータを処理する
+    while IFS=":" read -r tag name pass; do
+        if [ "$tag" == "$service_name" ]; then
+            found=true
+            echo "ユーザー名: $name"
+            echo "Password : $pass"
+            break
+        fi
+    done < saved_password.txt
+
+    if [ "$found" = false ]; then
+        echo "そのサービスは保存されていません"
+    fi
 
 elif [ "$choice" == "Exit" ]; then
     echo "Thank you!"
