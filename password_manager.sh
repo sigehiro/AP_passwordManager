@@ -5,18 +5,13 @@ echo "次の選択肢から入力してください(Add Password/Get Password/Ex
 
 read choice
 
-
 if [ "$choice" == "Add Password" ]; then
     read -p "enter service name:" service_name
-    #!入力値をファイルに保存
-    echo "$service_name">>saved_password.txt
-
     read -p "enter user name: " name
-    echo "$name">>saved_password.txt
-
     read -p "enter password: " password
-    echo "$password">>saved_password.txt
 
+    #!入力値をファイルに保存
+    echo "$service_name:$name:$password">>saved_password.txt
     echo "パスワードの追加は成功しました。"
 
 #!elif [ "$choice" == "Get Password" ]; then
